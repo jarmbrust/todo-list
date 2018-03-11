@@ -10,20 +10,27 @@ class TodoList extends Component {
             { label: 'Walk dogs', completed: false },
             { label: 'Write react program', completed: true },
             { label: 'Do dishes', completed: false }
-        ]
+        ],
+        newItem: ''
     }
 
-    addToListHandler = (event) => {
+    addToListHandler = () => {
         let listCopy = [...this.state.listItems];
-        console.log(listCopy, event);
-        listCopy.push({label: event.target.value});
+        console.log('>>', listCopy);
+        listCopy.push({label: this.state.newItem});
         this.setState({ listItems: listCopy });
+    }
+
+    enterValueHandler = (event) => {
+        console.log(event.target.value);
+        this.setState({ newItem: event.target.value})
     }
 
     render() {
         return(
             <div>
-                <input type="text" placeholder="enter item" onChange={this.addToListHandler} />
+                <input type="text" placeholder="enter item" onChange={ this.enterValueHandler }/>
+                <button onClick={() => this.addToListHandler()}>Enter</button>
                 <div className="TodoList">
                     <ListItems listItems={this.state.listItems} />
                 </div>
