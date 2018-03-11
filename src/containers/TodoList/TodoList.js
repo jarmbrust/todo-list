@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListItems from '../../components/ListItems/ListItems';
+import './TodoList.css';
 
 class TodoList extends Component {
 
@@ -12,10 +13,20 @@ class TodoList extends Component {
         ]
     }
 
+    addToListHandler = (event) => {
+        let listCopy = [...this.state.listItems];
+        console.log(listCopy, event);
+        listCopy.push({label: event.target.value});
+        this.setState({ listItems: listCopy });
+    }
+
     render() {
         return(
             <div>
-                <ListItems listItems={this.state.listItems} />
+                <input type="text" placeholder="enter item" onChange={this.addToListHandler} />
+                <div className="TodoList">
+                    <ListItems listItems={this.state.listItems} />
+                </div>
             </div>
         )
     }
