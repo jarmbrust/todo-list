@@ -6,7 +6,7 @@ const listItems = (props) => (
     <ul className="ListItems">
         {props.listItems.map((item, index) => {
             console.log(item, index);
-            return <ListItem listItem={item.label} key={index} />;
+            return <ListItem listItem={item.label} completed={item.completed} onChange={item.changed} key={index} />;
         })}
     </ul>
 );

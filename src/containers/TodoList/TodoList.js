@@ -17,19 +17,23 @@ class TodoList extends Component {
     addToListHandler = () => {
         let listCopy = [...this.state.listItems];
         console.log('>>', listCopy);
-        listCopy.push({label: this.state.newItem});
-        this.setState({ listItems: listCopy });
+        listCopy.push({label: this.state.newItem, completed: this.state.changed});
+        this.setState({ listItems: listCopy, newItem: '' });
     }
 
     enterValueHandler = (event) => {
         console.log(event.target.value);
-        this.setState({ newItem: event.target.value})
+        this.setState({ newItem: event.target.value});
+    }
+
+    checkboxHandler = () => {
+        
     }
 
     render() {
         return(
             <div>
-                <input type="text" placeholder="enter item" onChange={ this.enterValueHandler }/>
+                <input type="text" placeholder="enter item" value= {this.state.newItem} onChange={ this.enterValueHandler }/>
                 <button onClick={() => this.addToListHandler()}>Enter</button>
                 <div className="TodoList">
                     <ListItems listItems={this.state.listItems} />
