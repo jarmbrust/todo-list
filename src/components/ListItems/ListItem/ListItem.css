@@ -1,5 +1,4 @@
 .ListItem {
-    width: 300px;
     text-align: left;
     font-family: 'Nanum Pen Script', sans-serif;
     font-size: 30px;
@@ -7,4 +6,8 @@
 
 .ListItem input {
     margin-left: 10px;
+}
+
+.ListItem .crossout{ 
+    text-decoration: line-through;
 }

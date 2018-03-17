@@ -1,8 +1,18 @@
 .App {
   text-align: center;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 10px;
+  box-shadow: 2px 2px #ccc;
 }
 
 .App p.title {
   font-weight: bold;
   font-size: 1.7em;
+}
+
+@media (min-width: 500px) and (min-height: 400px) {
+  .App {
+      width: 500px;
+  }
 }

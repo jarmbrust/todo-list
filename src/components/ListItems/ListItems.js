@@ -12,7 +12,6 @@ const listItems = (props) => (
                     changed={() => { return props.checkboxChecked(item) }}
                     key={index}
                 />
-
             })
     }
     </ul>
