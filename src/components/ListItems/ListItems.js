@@ -4,10 +4,17 @@ import './ListItems.css';
 
 const listItems = (props) => (
     <ul className="ListItems">
-        {props.listItems.map((item, index) => {
-            console.log(item, index);
-            return <ListItem listItem={item.label} completed={item.completed} onChange={item.changed} key={index} />;
-        })}
+        {
+            Object.keys(props.listItems).map((item, index) => {
+                return <ListItem 
+                    listItem={item}
+                    completed={props.listItems[item].completed}
+                    changed={() => { return props.checkboxChecked(item) }}
+                    key={index}
+                />
+
+            })
+    }
     </ul>
 );
 
