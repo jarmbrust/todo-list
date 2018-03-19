@@ -1,3 +1,13 @@
 .TodoList {
     padding: 10px;
 }
+
+.TodoList input {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.TodoList button {
+    padding: 3px;
+    border-radius: 5px;
+}

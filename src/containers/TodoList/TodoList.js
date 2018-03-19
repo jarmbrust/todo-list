@@ -15,6 +15,7 @@ class TodoList extends Component {
     }
 
     addToListHandler = () => {
+        if (this.state.newItem.trim() === '') { return; }
         let listCopy = {...this.state.listItems};
         listCopy[this.state.newItem] = { completed: false };
         this.setState({ listItems: listCopy, newItem: '' });
@@ -34,10 +35,10 @@ class TodoList extends Component {
 
     render() {
         return(
-            <div>
+            <div className="TodoList">
                 <input type="text" placeholder="enter item" value= {this.state.newItem} onChange={ this.enterValueHandler }/>
                 <button onClick={() => this.addToListHandler()}>Enter</button>
-                <div className="TodoList">
+                <div>
                     <ListItems 
                         listItems={this.state.listItems} 
                         checkboxChecked={this.checkboxHandler}
