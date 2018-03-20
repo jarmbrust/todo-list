@@ -22,21 +22,28 @@ class TodoList extends Component {
     }
 
     enterValueHandler = (event) => {
-        this.setState({ newItem: event.target.value});
+        if (event.key === 'Enter') {
+            this.addToListHandler();
+        } else {
+            this.setState({ newItem: this.state.newItem + event.key });
+        }
     }
 
     checkboxHandler = (event) => {
         const listCopy = {...this.state.listItems};
         listCopy[event].completed = !listCopy[event].completed;
-        this.setState({
-            listItems: listCopy
-        });
+        this.setState({ listItems: listCopy });
     }
 
     render() {
         return(
             <div className="TodoList">
-                <input type="text" placeholder="enter item" value= {this.state.newItem} onChange={ this.enterValueHandler }/>
+                <input 
+                    type="text" 
+                    placeholder="enter item" 
+                    value= {this.state.newItem} 
+                    onKeyUp={ this.enterValueHandler }
+                />
                 <button onClick={() => this.addToListHandler()}>Enter</button>
                 <div>
                     <ListItems 
