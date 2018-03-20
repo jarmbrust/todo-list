@@ -4,11 +4,14 @@
   margin: auto;
   margin-top: 10px;
   box-shadow: 2px 2px #ccc;
+  background-color: #f8ecc2;
+  border-radius: 5px;
 }
 
 .App p.title {
   font-weight: bold;
-  font-size: 1.7em;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 @media (min-width: 500px) and (min-height: 400px) {
