@@ -16,21 +16,21 @@ class TodoList extends Component {
 
     addToListHandler = () => {
         if (this.state.newItem.trim() === '') { return; }
-        let listCopy = {...this.state.listItems};
+        let listCopy = { ...this.state.listItems };
         listCopy[this.state.newItem] = { completed: false };
         this.setState({ listItems: listCopy, newItem: '' });
     }
 
-    enterValueHandler = (event) => {
+    enterValueHandler = event => {
         if (event.key === 'Enter') {
             this.addToListHandler();
         } else {
-            this.setState({ newItem: this.state.newItem + event.key });
+            this.setState({ newItem: event.target.value + event.key });
         }
     }
 
-    checkboxHandler = (event) => {
-        const listCopy = {...this.state.listItems};
+    checkboxHandler = event => {
+        const listCopy = { ...this.state.listItems };
         listCopy[event].completed = !listCopy[event].completed;
         this.setState({ listItems: listCopy });
     }
@@ -41,14 +41,14 @@ class TodoList extends Component {
                 <input 
                     type="text" 
                     placeholder="enter item" 
-                    value= {this.state.newItem} 
-                    onKeyUp={ this.enterValueHandler }
+                    value={ this.state.newItem } 
+                    onKeyPress={ event => this.enterValueHandler(event) }
                 />
-                <button onClick={() => this.addToListHandler()}>Enter</button>
+                <button onClick={ () => this.addToListHandler() }>Enter</button>
                 <div>
                     <ListItems 
-                        listItems={this.state.listItems} 
-                        checkboxChecked={this.checkboxHandler}
+                        listItems={ this.state.listItems } 
+                        checkboxChecked={ this.checkboxHandler }
                     />
                 </div>
             </div>
